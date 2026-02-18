@@ -27,7 +27,7 @@ There is **no autonomous protection layer** in the current DeFi ecosystem. Users
 
 ## The Solution
 
-ShieldFi is an **autonomous AI agent** built on Claude that monitors your DeFi positions across Venus Protocol and PancakeSwap V3 on BNB Chain — and **automatically executes protective actions** before you get liquidated, drained by IL, or wiped out.
+ShieldFi is an **autonomous AI agent** built on Claude that monitors your DeFi positions across Venus Protocol and PancakeSwap V3 on BNB Chain and **automatically executes protective actions** before you get liquidated, drained by IL, or wiped out.
 
 It does not alert you and wait. It **acts**.
 
