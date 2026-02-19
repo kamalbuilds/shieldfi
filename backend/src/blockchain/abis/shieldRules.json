@@ -1,0 +1,144 @@
+[
+  {
+    "inputs": [
+      { "name": "ruleType", "type": "uint8" },
+      { "name": "threshold", "type": "uint256" },
+      { "name": "autoExecute", "type": "bool" },
+      { "name": "description", "type": "string" }
+    ],
+    "name": "createRule",
+    "outputs": [{ "name": "ruleId", "type": "uint256" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "ruleId", "type": "uint256" }],
+    "name": "toggleRule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "name": "ruleId", "type": "uint256" },
+      { "name": "newThreshold", "type": "uint256" }
+    ],
+    "name": "updateThreshold",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "ruleId", "type": "uint256" }],
+    "name": "deleteRule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "user", "type": "address" }],
+    "name": "getUserRules",
+    "outputs": [
+      {
+        "components": [
+          { "name": "user", "type": "address" },
+          { "name": "ruleType", "type": "uint8" },
+          { "name": "threshold", "type": "uint256" },
+          { "name": "autoExecute", "type": "bool" },
+          { "name": "active", "type": "bool" },
+          { "name": "description", "type": "string" },
+          { "name": "createdAt", "type": "uint256" },
+          { "name": "lastTriggeredAt", "type": "uint256" },
+          { "name": "triggerCount", "type": "uint256" }
+        ],
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "user", "type": "address" }],
+    "name": "getActiveRules",
+    "outputs": [
+      {
+        "components": [
+          { "name": "user", "type": "address" },
+          { "name": "ruleType", "type": "uint8" },
+          { "name": "threshold", "type": "uint256" },
+          { "name": "autoExecute", "type": "bool" },
+          { "name": "active", "type": "bool" },
+          { "name": "description", "type": "string" },
+          { "name": "createdAt", "type": "uint256" },
+          { "name": "lastTriggeredAt", "type": "uint256" },
+          { "name": "triggerCount", "type": "uint256" }
+        ],
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "ruleId", "type": "uint256" }],
+    "name": "markTriggered",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTotalRulesCount",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "", "type": "uint256" }],
+    "name": "rules",
+    "outputs": [
+      { "name": "user", "type": "address" },
+      { "name": "ruleType", "type": "uint8" },
+      { "name": "threshold", "type": "uint256" },
+      { "name": "autoExecute", "type": "bool" },
+      { "name": "active", "type": "bool" },
+      { "name": "description", "type": "string" },
+      { "name": "createdAt", "type": "uint256" },
+      { "name": "lastTriggeredAt", "type": "uint256" },
+      { "name": "triggerCount", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "user", "type": "address" },
+      { "indexed": true, "name": "ruleId", "type": "uint256" },
+      { "indexed": false, "name": "ruleType", "type": "uint8" },
+      { "indexed": false, "name": "threshold", "type": "uint256" }
+    ],
+    "name": "RuleCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "ruleId", "type": "uint256" },
+      { "indexed": false, "name": "active", "type": "bool" }
+    ],
+    "name": "RuleToggled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "ruleId", "type": "uint256" },
+      { "indexed": false, "name": "timestamp", "type": "uint256" }
+    ],
+    "name": "RuleTriggered",
+    "type": "event"
+  }
+]

@@ -1,0 +1,105 @@
+[
+  {
+    "inputs": [
+      { "name": "actionType", "type": "uint8" },
+      { "name": "riskScoreBefore", "type": "uint256" },
+      { "name": "riskScoreAfter", "type": "uint256" },
+      { "name": "amountProtected", "type": "uint256" },
+      { "name": "reasoningHash", "type": "bytes32" },
+      { "name": "tokenInvolved", "type": "address" }
+    ],
+    "name": "logAction",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "user", "type": "address" }],
+    "name": "getUserActions",
+    "outputs": [
+      {
+        "components": [
+          { "name": "user", "type": "address" },
+          { "name": "actionType", "type": "uint8" },
+          { "name": "riskScoreBefore", "type": "uint256" },
+          { "name": "riskScoreAfter", "type": "uint256" },
+          { "name": "amountProtected", "type": "uint256" },
+          { "name": "reasoningHash", "type": "bytes32" },
+          { "name": "tokenInvolved", "type": "address" },
+          { "name": "timestamp", "type": "uint256" }
+        ],
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "user", "type": "address" }],
+    "name": "getUserStats",
+    "outputs": [
+      { "name": "actionCount", "type": "uint256" },
+      { "name": "totalAmountProtected", "type": "uint256" },
+      { "name": "avgRiskReduction", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "count", "type": "uint256" }],
+    "name": "getRecentActions",
+    "outputs": [
+      {
+        "components": [
+          { "name": "user", "type": "address" },
+          { "name": "actionType", "type": "uint8" },
+          { "name": "riskScoreBefore", "type": "uint256" },
+          { "name": "riskScoreAfter", "type": "uint256" },
+          { "name": "amountProtected", "type": "uint256" },
+          { "name": "reasoningHash", "type": "bytes32" },
+          { "name": "tokenInvolved", "type": "address" },
+          { "name": "timestamp", "type": "uint256" }
+        ],
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTotalActionsCount",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "user", "type": "address" }],
+    "name": "actionsCount",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "name": "user", "type": "address" }],
+    "name": "totalProtected",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "name": "user", "type": "address" },
+      { "indexed": false, "name": "actionType", "type": "uint8" },
+      { "indexed": false, "name": "riskScoreBefore", "type": "uint256" },
+      { "indexed": false, "name": "riskScoreAfter", "type": "uint256" },
+      { "indexed": false, "name": "amountProtected", "type": "uint256" },
+      { "indexed": false, "name": "timestamp", "type": "uint256" }
+    ],
+    "name": "ShieldActivated",
+    "type": "event"
+  }
+]
