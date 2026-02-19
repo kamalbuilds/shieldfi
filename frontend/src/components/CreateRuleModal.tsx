@@ -97,38 +97,36 @@ export default function CreateRuleModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0"
+        style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}
         onClick={onClose}
       />
 
-      {/* Modal */}
-      <div className="relative bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-lg shadow-2xl">
-        <div className="flex items-center justify-between p-6 border-b border-slate-800">
-          <h2 className="text-xl font-bold text-white">
+      <div className="relative w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl animate-fade-in-up" style={{ background: 'linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(6,8,15,0.98) 100%)', border: '1px solid rgba(148,163,184,0.1)' }}>
+        <div className="flex items-center justify-between p-6" style={{ borderBottom: '1px solid rgba(148,163,184,0.06)' }}>
+          <h2 className="text-lg font-bold text-white">
             {editingRule ? 'Edit Protection Rule' : 'Create Protection Rule'}
           </h2>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white transition-colors p-1"
+            className="text-slate-500 hover:text-white transition-colors p-1 rounded-lg hover:bg-slate-800/50"
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-5">
-          {/* Rule Type */}
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">
+            <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">
               Rule Type
             </label>
             <select
               value={ruleType}
               onChange={(e) => setRuleType(e.target.value as Rule['ruleType'])}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white text-sm focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors"
+              className="search-input w-full rounded-lg px-4 py-2.5 text-sm"
             >
               {RULE_TYPES.map((type) => (
                 <option key={type.value} value={type.value}>
@@ -136,12 +134,11 @@ export default function CreateRuleModal({
                 </option>
               ))}
             </select>
-            <p className="mt-1.5 text-xs text-slate-400">{selectedType.help}</p>
+            <p className="mt-1.5 text-[11px] text-slate-500">{selectedType.help}</p>
           </div>
 
-          {/* Threshold */}
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">
+            <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">
               Threshold
             </label>
             <input
@@ -150,47 +147,44 @@ export default function CreateRuleModal({
               value={threshold}
               onChange={(e) => setThreshold(e.target.value)}
               placeholder={selectedType.placeholder}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white text-sm focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-slate-500"
+              className="search-input w-full rounded-lg px-4 py-2.5 text-sm"
             />
           </div>
 
-          {/* Auto-execute toggle */}
           <div>
             <div className="flex items-center justify-between">
               <div>
-                <label className="text-sm font-medium text-slate-300">
+                <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">
                   Auto-execute
                 </label>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  Automatically execute protection actions when triggered
+                <p className="text-[11px] text-slate-500 mt-0.5">
+                  Automatically execute protection when triggered
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setAutoExecute(!autoExecute)}
-                className={`relative w-11 h-6 rounded-full transition-colors ${
-                  autoExecute ? 'bg-emerald-500' : 'bg-slate-700'
-                }`}
+                className="relative w-10 h-5 rounded-full transition-colors"
+                style={{ background: autoExecute ? 'linear-gradient(135deg, #0891b2, #7c3aed)' : 'rgba(51,65,85,0.5)' }}
               >
                 <div
-                  className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${
-                    autoExecute ? 'translate-x-5.5' : 'translate-x-0.5'
+                  className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow-sm transition-transform ${
+                    autoExecute ? 'translate-x-5' : 'translate-x-0.5'
                   }`}
                 />
               </button>
             </div>
             {autoExecute && (
-              <div className="mt-2 bg-amber-500/10 border border-amber-500/30 rounded-lg p-2.5">
-                <p className="text-xs text-amber-400">
-                  Warning: Auto-execute will perform on-chain transactions automatically. Ensure you understand the implications.
+              <div className="mt-2 rounded-lg p-2.5" style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.15)' }}>
+                <p className="text-[11px] text-amber-400">
+                  Auto-execute will perform on-chain transactions automatically. Make sure you understand the implications.
                 </p>
               </div>
             )}
           </div>
 
-          {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">
+            <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">
               Description
             </label>
             <textarea
@@ -198,13 +192,13 @@ export default function CreateRuleModal({
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Describe what this rule does..."
               rows={3}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-2.5 text-white text-sm focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-slate-500 resize-none"
+              className="search-input w-full rounded-lg px-4 py-2.5 text-sm resize-none"
             />
           </div>
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
-              <p className="text-sm text-red-400">{error}</p>
+            <div className="rounded-lg p-3" style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.15)' }}>
+              <p className="text-xs text-red-400">{error}</p>
             </div>
           )}
 
@@ -212,14 +206,14 @@ export default function CreateRuleModal({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 py-2.5 text-sm font-medium rounded-lg border border-slate-700 text-slate-300 hover:bg-slate-800 transition-colors"
+              className="btn-secondary flex-1 py-2.5 text-sm rounded-lg"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="flex-1 py-2.5 text-sm font-semibold rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="btn-primary flex-1 py-2.5 text-sm rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {submitting
                 ? 'Saving...'

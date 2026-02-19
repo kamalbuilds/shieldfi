@@ -458,10 +458,4 @@ shieldfi/
 
 ---
 
-## License
-
-MIT License — see [LICENSE](./LICENSE)
-
----
-
 *Built for Good Vibes Only: OpenClaw Edition*
